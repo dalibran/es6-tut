@@ -2,29 +2,25 @@
 
 (function () {
 
-  function logSomething(something = 'default_message', somethingElse = something + 'with concatenation') {
-    console.log(something, somethingElse);
+ var template = `this is a template
+ string!`;
 
+  let a = "S",
+      b = 'something';
+
+  console.log(` a is ${a}, while b is ${b} else`);
+
+  function reverseString(string) {
+    return string.split('').reverse().join('');
   }
 
-    logSomething();
-    logSomething(undefined, 'and overriding');
+  // console.log(`a is ${a}, while b is ${b} else, and ${reverseString(b)} is reversed`);
 
-    function sum(a, b, c) {
-      return a + b + c;
-    }
+  function str(literals, ...values) {
+    return values[3] + literals[3] + literals[1] + values[2] + literals[0] + values[1];
+  }
 
-    let nums = [1, 2, 3];
+  console.log(str`a is ${a}, while b is ${b} else, and ${reverseString(b)} is reversed`);
 
-    console.log(sum(...nums));
-
-    let arr = [...nums, 4, 5, 6];
-    console.log(arr);
-
-    function joinStuff(...stuffs) {
-      console.log(stuffs.join(' '));
-    }
-
-    joinStuff('Stuffs', 'to', 'join');
 
 })();

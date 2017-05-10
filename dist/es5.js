@@ -1,36 +1,28 @@
 'use strict';
 
+var _templateObject = _taggedTemplateLiteral(['a is ', ', while b is ', ' else, and ', ' is reversed'], ['a is ', ', while b is ', ' else, and ', ' is reversed']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 (function () {
 
-  function logSomething() {
-    var something = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default_message';
-    var somethingElse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : something + 'with concatenation';
+  var template = 'this is a template\n string!';
 
-    console.log(something, somethingElse);
+  var a = "S",
+      b = 'something';
+
+  console.log(' a is ' + a + ', while b is ' + b + ' else');
+
+  function reverseString(string) {
+    return string.split('').reverse().join('');
   }
 
-  logSomething();
-  logSomething(undefined, 'and overriding');
+  // console.log(`a is ${a}, while b is ${b} else, and ${reverseString(b)} is reversed`);
 
-  function sum(a, b, c) {
-    return a + b + c;
+  function str(literals) {
+    return (arguments.length <= 4 ? undefined : arguments[4]) + literals[3] + literals[1] + (arguments.length <= 3 ? undefined : arguments[3]) + literals[0] + (arguments.length <= 2 ? undefined : arguments[2]);
   }
 
-  var nums = [1, 2, 3];
-
-  console.log(sum.apply(undefined, nums));
-
-  var arr = [].concat(nums, [4, 5, 6]);
-  console.log(arr);
-
-  function joinStuff() {
-    for (var _len = arguments.length, stuffs = Array(_len), _key = 0; _key < _len; _key++) {
-      stuffs[_key] = arguments[_key];
-    }
-
-    console.log(stuffs.join(' '));
-  }
-
-  joinStuff('Stuffs', 'to', 'join');
+  console.log(str(_templateObject, a, b, reverseString(b)));
 })();
 //# sourceMappingURL=es5.js.map
